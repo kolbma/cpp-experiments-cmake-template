@@ -1,9 +1,9 @@
 name: safe-cplusplus-build
 on: [push, pull_request, workflow_dispatch]
 env:
-  CC=gcc-14
-  COVERAGE_GIST_ID=d7b822a2fd65dc027c2cc661184207aa
-  CXX=g++-14
+  CC: gcc-14
+  COVERAGE_GIST_ID: d7b822a2fd65dc027c2cc661184207aa
+  CXX: g++-14
 jobs:
   source-check:
     name: source check
@@ -72,8 +72,8 @@ jobs:
     runs-on: ubuntu-24.04
     needs: source-check
     env:
-      CC=clang-18
-      CXX=clang++-18
+      CC: clang-18
+      CXX: clang++-18
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
@@ -87,8 +87,8 @@ jobs:
     runs-on: ubuntu-24.04
     needs: build-check-clang
     env:
-      CC=clang-18
-      CXX=clang++-18
+      CC: clang-18
+      CXX: clang++-18
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
