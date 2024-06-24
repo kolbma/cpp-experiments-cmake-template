@@ -1,0 +1,82 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"c-cpp-flylint.clang.pedantic": true,
+		"c-cpp-flylint.cppcheck.executable": "/usr/bin/cppcheck",
+		"c-cpp-flylint.cppcheck.extraArgs": [
+			"--force",
+			"--check-level=normal",
+			"--enable=all",
+			"--disable=unusedFunction,information",
+			"--inline-suppr",
+			"--cppcheck-build-dir=${workspaceRoot}/build",
+			"--suppressions-list=${workspaceRoot}/build/cppcheck-suppress",
+			// "--project=${workspaceRoot}/build/compile_commands.json",
+			// "-i${workspaceRoot}/build"
+		],
+		"c-cpp-flylint.enable": true,
+		"c-cpp-flylint.excludeFromWorkspacePaths": [
+			"./.cpm_cache",
+			"./build",
+			"./config"
+		],
+		"c-cpp-flylint.includePaths": [
+			"${workspaceRoot}/include",
+			"${workspaceRoot}/build/config/include",
+			"${workspaceRoot}/.cpm_cache/catch2/ba915e54f2b8b6ea90b8b26efc4b9e08bd26fc7d/Catch2/src",
+			"${workspaceRoot}/build/_deps/catch2-build/generated-includes"
+		],
+		"c-cpp-flylint.standard": [
+			"c++23"
+		],
+		"C_Cpp.autocompleteAddParentheses": true,
+		"C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+		"C_Cpp.inlayHints.autoDeclarationTypes.showOnLeft": true,
+		"C_Cpp.inlayHints.parameterNames.enabled": true,
+		"C_Cpp.inlayHints.referenceOperator.enabled": true,
+		"C_Cpp.codeAnalysis.clangTidy.enabled": true,
+		"C_Cpp.files.exclude": {
+			".cpm_cache/**": true,
+			"build/**": true,
+			"config/config.hpp.in": true,
+			"**/.vscode": true,
+			"**/.vs": true
+		},
+		"C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
+		"C_Cpp.default.includePath": [
+			"${default}",
+			"${workspaceRoot}/include",
+			"${workspaceRoot}/build/config/include",
+			"${workspaceRoot}/.cpm_cache/catch2/ba915e54f2b8b6ea90b8b26efc4b9e08bd26fc7d/Catch2/src",
+			"${workspaceRoot}/build/_deps/catch2-build/generated-includes"
+		],
+		"C_Cpp.default.cppStandard": "c++23",
+		"editor.rulers": [
+			72,
+			80
+		],
+		"C_Cpp.codeAnalysis.clangTidy.path": "/usr/bin/clang-tidy",
+		"C_Cpp.clang_format_path": "/usr/bin/clang-format",
+		"C/C++ Include Guard.Macro Type": "Filepath",
+		"C/C++ Include Guard.Path Skip": 1,
+		"C/C++ Include Guard.Remove Extension": false,
+		"files.associations": {
+			"thread": "cpp"
+		},
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"jbenden.c-cpp-flylint",
+			"akiramiyakoda.cppincludeguard",
+			"twxs.cmake",
+			"ms-vscode.cmake-tools",
+			"cschlosser.doxdocgen",
+			"vadimcn.vscode-lldb"
+		]
+	},
+}

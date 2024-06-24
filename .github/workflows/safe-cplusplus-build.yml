@@ -1,0 +1,99 @@
+name: safe-cplusplus-build
+on: [push, pull_request, workflow_dispatch]
+env:
+  CC=gcc-14
+  COVERAGE_GIST_ID=d7b822a2fd65dc027c2cc661184207aa
+  CXX=g++-14
+jobs:
+  source-check:
+    name: source check
+    runs-on: ubuntu-24.04
+    steps:
+      - name: install packages
+        run: apt-get install cppcheck flawfinder
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: clang-format style check
+        run: |
+          cmake -B build -D CMAKE_BUILD_TYPE=Debug
+          cmake --build build --target clang-format
+          cmake --build build --target check-clang-format
+      - name: cppcheck
+        run: cmake --build build --target cppcheck
+      - name: flawfinder
+        run: cmake --build build --target flawfinder
+      - name: clang-tidy
+        run: cmake --build build --target clang-tidy
+  coverage:
+    name: coverage
+    runs-on: ubuntu-24.04
+    needs: source-check
+    steps:
+      - name: install packages
+        run: apt-get install gcovr
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: cmake coverage
+        run: |
+          cmake -B build -D CMAKE_BUILD_TYPE=Debug -D ENABLE_COVERAGE=ON
+          cmake --build build --target coverage
+      - name: create badge
+        uses: gaelgirodon/ci-badges-action@v1
+        with:
+          ref: false
+          gist-id: ${{ env.COVERAGE_GIST_ID }}
+          token: ${{ secrets.CPP_EXPERIMENTS_COVERAGE_GIST_TOKEN }}
+  build-check-gcc:
+    name: build check GCC
+    runs-on: ubuntu-24.04
+    needs: source-check
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: cmake build
+        run: |
+          cmake -B build -D CMAKE_BUILD_TYPE=Debug -D ENABLE_WARNINGS_AS_ERRORS=ON
+          cmake --build build
+          ctest --test-dir build
+  build-release-gcc:
+    name: build release GCC
+    runs-on: ubuntu-24.04
+    needs: build-check-gcc
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: cmake build
+        run: |
+          cmake -B build -D CMAKE_BUILD_TYPE=Release -D ENABLE_WARNINGS_AS_ERRORS=ON
+          cmake --build build
+          ctest --test-dir build
+  build-check-clang:
+    name: build check CLang
+    runs-on: ubuntu-24.04
+    needs: source-check
+    env:
+      CC=clang-18
+      CXX=clang++-18
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: cmake build
+        run: |
+          cmake -B build -D CMAKE_BUILD_TYPE=Debug -D ENABLE_WARNINGS_AS_ERRORS=ON
+          cmake --build build
+          ctest --test-dir build
+  build-release-clang:
+    name: build release CLang
+    runs-on: ubuntu-24.04
+    needs: build-check-clang
+    env:
+      CC=clang-18
+      CXX=clang++-18
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: cmake build
+        run: |
+          cmake -B build -D CMAKE_BUILD_TYPE=Release -D ENABLE_WARNINGS_AS_ERRORS=ON
+          cmake --build build
+          ctest --test-dir build

@@ -1,0 +1,4 @@
+Checks: 'bugprone-*,cert-*,concurrency-*,cppcoreguidelines-*,misc-*,modernize-*,clang-analyzer-*,clang-diagnostic-*,performance-*,portability-*,readability-*,google-*,llvm-*'
+ExtraArgsBefore: ['-std=c++23']
+UseColor: false
+WarningsAsErrors: '*'

@@ -1,0 +1,15 @@
+BasedOnStyle: LLVM
+AccessModifierOffset: -4
+AlignEscapedNewlines: Left
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+BreakBeforeBraces: Attach
+ColumnLimit: 80
+FixNamespaceComments: false
+IndentCaseLabels: false
+IndentWidth: 4
+NamespaceIndentation: All
+ReflowComments: true
+SeparateDefinitionBlocks: Always
+TabWidth: 4
+UseTab: Never

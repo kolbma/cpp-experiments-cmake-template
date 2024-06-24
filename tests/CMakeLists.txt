@@ -1,0 +1,10 @@
+if(ENABLE_CATCH2_TEST)
+  include(Catch)
+endif()
+
+file(GLOB_RECURSE cmakelists RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} */CMakeLists.txt)
+foreach(f ${cmakelists})
+  string(FIND ${f} "/" f_end REVERSE)
+  string(SUBSTRING ${f} 0 ${f_end} subdir)
+  add_subdirectory(${subdir})
+endforeach()
