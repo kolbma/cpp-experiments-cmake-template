@@ -10,14 +10,16 @@ if(ENABLE_COVERAGE)
         --config ${CMAKE_SOURCE_DIR}/gcovr.cfg
         --root ${CMAKE_SOURCE_DIR}
         --object-directory=${CMAKE_BINARY_DIR}
+        --verbose
         --txt -
         ${CMAKE_BINARY_DIR}
       COMMAND ${GCOVR_PATH}
         --config ${CMAKE_SOURCE_DIR}/gcovr.cfg
         --root ${CMAKE_SOURCE_DIR}
         --object-directory=${CMAKE_BINARY_DIR}
+        --verbose
         --xml ${CMAKE_BINARY_DIR}/gcov/cobertura-coverage.xml
-        ${CMAKE_SOURCE_DIR}
+        ${CMAKE_BINARY_DIR}
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/gcov)
     add_dependencies(coverage coverage-clean apps tests)
   endfunction()
