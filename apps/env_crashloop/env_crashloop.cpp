@@ -40,8 +40,9 @@ auto rnd_value(uint8_t len) -> std::string {
 
 auto main() -> int {
     // Flawfinder: ignore
-    const auto *env_value_start = std::getenv(k_env_varname); // NOLINT
+    auto *env_value_start = std::getenv(k_env_varname); // NOLINT
     assert(!env_value_start);
+    env_value_start = nullptr;
 
     auto th_getenv = std::array<std::jthread, k_thread_count>{};
 
