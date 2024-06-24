@@ -4,6 +4,7 @@ env:
   CC: gcc-14
   COVERAGE_GIST_ID: d7b822a2fd65dc027c2cc661184207aa
   CXX: g++-14
+  GCOV: gcov-14
 jobs:
   source-check:
     name: source check
