@@ -42,7 +42,9 @@ auto main() -> int {
     // Flawfinder: ignore
     const auto *env_value_start = std::getenv(k_env_varname); // NOLINT
     assert(!env_value_start);
-    env_value_start = nullptr;
+    if (env_value_start != nullptr) {
+        // dummy for unused in Release
+    }
 
     auto th_getenv = std::array<std::jthread, k_thread_count>{};
 
