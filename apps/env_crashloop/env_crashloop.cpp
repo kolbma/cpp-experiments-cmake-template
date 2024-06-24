@@ -40,7 +40,7 @@ auto rnd_value(uint8_t len) -> std::string {
 
 auto main() -> int {
     // Flawfinder: ignore
-    auto *env_value_start = std::getenv(k_env_varname); // NOLINT
+    const auto *env_value_start = std::getenv(k_env_varname); // NOLINT
     assert(!env_value_start);
     env_value_start = nullptr;
 
