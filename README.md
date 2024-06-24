@@ -1,7 +1,8 @@
 # C++ Experiments CMake Template
 
-![build](https://github.com/kolbma/cpp-experiments-cmake-template/actions/workflows/safe-cplusplus-build.yml/badge.svg)
-![coverage](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fgist.githubusercontent.com%2Fkolbma%2Fd7b822a2fd65dc027c2cc661184207aa%2Fraw%2Fcpp-experiments-cmake-template-cobertura-coverage.json)
+![Build](https://github.com/kolbma/cpp-experiments-cmake-template/actions/workflows/safe-cplusplus-build.yml/badge.svg)
+![CodeQL](https://github.com/kolbma/cpp-experiments-cmake-template/actions/workflows/codeql.yml/badge.svg)
+![Coverage](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fgist.githubusercontent.com%2Fkolbma%2Fd7b822a2fd65dc027c2cc661184207aa%2Fraw%2Fcpp-experiments-cmake-template-cobertura-coverage.json)
 
 The _C++ Experiments CMake Template_ is a project template for modern
 C++ projects with the
