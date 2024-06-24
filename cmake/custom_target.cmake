@@ -125,6 +125,11 @@ function(create_test TEST_NAME)
   create_checks(${TEST_NAME}_obj)
 
   if(${ENABLE_CATCH2_TEST})
+    if(${ENABLE_WARNINGS})
+      target_compile_options(${TEST_NAME}_obj PRIVATE -Wno-effc++)
+      # target_compile_options(${TEST_NAME} PRIVATE -Wno-effc++)
+    endif()
+
     target_link_libraries(${TEST_NAME} PRIVATE Catch2::Catch2WithMain)
     catch_discover_tests(${TEST_NAME})
   endif()

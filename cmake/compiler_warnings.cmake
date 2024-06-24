@@ -14,7 +14,7 @@ function(target_set_warnings)
     message(STATUS "warnings enabled for: ${TARGET_SET_WARNINGS_TARGET}")
     message(STATUS "warnings as errors: ${TARGET_SET_WARNINGS_AS_ERRORS}")
 
-    set(CLANG_WARNINGS
+    set(COMMON_WARNINGS
         # Baseline
         -Wall
         -Wextra # reasonable and standard
@@ -36,10 +36,15 @@ function(target_set_warnings)
     )
 
     set(GCC_WARNINGS
-        ${CLANG_WARNINGS}
+        ${COMMON_WARNINGS}
         -Wduplicated-cond # warn if if / else chain has duplicated conditions
         -Wduplicated-branches # warn if if / else branches have duplicated code
         -Wlogical-op # warn about logical operations being used where bitwise were probably wanted
+    )
+
+    set(CLANG_WARNINGS
+        ${COMMON_WARNINGS}
+        -Wshadow-all
     )
 
     if(${TARGET_SET_WARNINGS_AS_ERRORS})
