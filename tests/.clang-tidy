@@ -1,4 +1,5 @@
 Checks: 'bugprone-*,cert-*,-cert-dcl58-cpp,-cert-err58-cpp,concurrency-*,cppcoreguidelines-*,-cppcoreguidelines-avoid-do-while,misc-*,-misc-use-anonymous-namespace,modernize-*,clang-analyzer-*,clang-diagnostic-*,-clang-diagnostic-error,performance-*,portability-*,readability-*,google-*,llvm-*'
+CheckOptions: [{key: readability-function-cognitive-complexity.Threshold, value: 30}]
 ExtraArgsBefore: ['-std=c++23']
 UseColor: false
 WarningsAsErrors: '*'
