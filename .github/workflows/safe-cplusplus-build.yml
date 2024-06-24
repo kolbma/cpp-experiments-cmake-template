@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: install packages
-        run: apt-get install cppcheck flawfinder
+        run: sudo apt-get install cppcheck flawfinder
       - name: checkout repo
         uses: actions/checkout@v4
       - name: clang-format style check
@@ -30,7 +30,7 @@ jobs:
     needs: source-check
     steps:
       - name: install packages
-        run: apt-get install gcovr
+        run: sudo apt-get install gcovr
       - name: checkout repo
         uses: actions/checkout@v4
       - name: cmake coverage
