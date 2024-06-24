@@ -19,6 +19,10 @@ on:
   schedule:
     - cron: '16 9 * * 5'
 
+env:
+  CC: gcc-14
+  CXX: g++-14
+
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
